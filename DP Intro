@@ -1,0 +1,2 @@
+Dynamic Programming is a method of solving complex problems by breaking them up into smaller sub-problems, storing the solutions of the sub-problems into memory so that they can be re-used and then using the solutions to the sub prolblems to get the solution of the main problem. 
+The steps to analyse start off similar to recursion but then we do not compute the sub-problems again and again, but instead we just store the solution in an array and re-use it when required. This saves cost of computation. 

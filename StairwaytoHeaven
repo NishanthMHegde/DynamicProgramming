@@ -1,0 +1,35 @@
+Problem statement: There are N steps to climb to reach heaven. Find out in how many ways these N steps can be climbed to reach heaven. 
+
+Let us analyse the problem,
+
+If N=0, then there is only 1 way to climb which is not to climb.
+If N=1, then there is only 1 way to climb.
+If N=2, then there are 2 ways, namely:
+	a. Climb one stair, then another stair.
+	b. Climb both stairs at once. 
+
+If N=3, then there are 3 ways, namely:
+	a. Climb one step at a time
+	b. Climb one step, then both steps at the same time. 
+	c. Climb 2 steps at a time, then climb third step.
+
+If N=4, then there are 5 ways, namely:
+	a. Climb one step at a time
+	b. 1 step + 1 step + 2 steps.
+	c. 1 step + 2 steps + 1 step.
+	d. 2 steps + 2 steps
+	e. 2 steps + 1 step + 1 step
+
+We can see that there is now a pattern. For each N, the number of ways to climb the N steps is equal to the number of ways to climb N-1 steps plus the number of ways to climb N-2 steps. 
+
+DP soln:
+
+int ways[N+1]; // there cannot be 0 steps
+
+ways[0] = 1;
+ways[1] = 1;
+
+for i=2 to i<=N+1:
+	ways[i] = ways[i-1] + ways[i-2];
+
+return ways[N+1];

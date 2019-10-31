@@ -1,0 +1,55 @@
+Problem: you are given a rod of length N inches and an array of size N+1 where the ith item represents the cost for ith inch of the rod.
+
+Consider an example rod of length 4 inches and array:
+0 2 4 7 8
+
+0 inches cost 0 rupees
+1 inch costs 2 rupees
+2 inches cost 4 rupees
+3 inches cost 7 rupees
+entire 4 inches cost 8 rupees
+
+Find the maximum profit we can earn by either seeling this entire rod or by cutting the rod.
+
+
+Solution:
+
+let us consider all possibilities:
+
+P1: 1 inch + remaining 3 inches = 2 + 7 = 9 rupees.
+
+P2: 2 inches + 2 inches = 4 + 4 = 8 rupees.
+
+
+P3: 1 inch + 1 inch + 1 inch + 1 inch = 2*4 = 8 rupees
+
+P4 : 1 inch + 2 inches + 1 inch = 2 + 4 + 2 = 8 rupees
+
+P5: entire 4 inches = 8 rupees
+
+We can see that P1 has the highest profit. 
+
+So how do we solve it?
+
+Answer:
+
+We need to maintain an array which consists of max profit for 0 to N inches. 
+
+For each inch i=1 to N, the max profit will be rod[N] = max(cost[i] + rod[N-i]) 
+
+
+Pseudocode:
+
+//initialize an array of size N+1
+function int(cost[], N):
+int rod[N+1];
+
+//for each inch we have to find the max profit. 
+
+for i=1 to N:
+	max_profit = -INF
+	for j=1 to i:
+		max_profit = max(max_profit, cost[j] + rod[i-j])
+	rod[i] = max_profit
+
+return rod[][]

@@ -1,0 +1,35 @@
+Problem: Find the sum of all the numbers within a given range(inclusive) for a given array.
+Given array,
+
+2 5 4 1 6 8 4
+
+sum_of_ranges(2, 6) = 23
+sum_of_ranges(3, 5) = 15
+
+Solution: We can find the sum of all elements from index =0 to the size of the array and store the values in an array and re-use them.
+We can use sum_until array for each index.
+
+sum_until = [2, 7, 11, 12, 18, 26, 30]
+For the above array we can use the formula = sum_until[i] = sum_until[i-1] + array[i]
+Then for any range (i,j) we can use sum_range(i,j) = sum_until[j] - sum_until[i-1]
+
+For above problem we have, 
+
+sum_until = [2, 7, 11, 12, 18, 26, 30]
+sum_range(2 ,5) = sum_range(0, 5) - sum_range(0,1)
+if i==0, then sum_range(i,j) = sum_until[j]
+
+Pseudocode:
+
+function sum_in_range(arr[], i, j):
+	n = arr.size()
+	int sum_until[n];
+	sum_until[0] = arr[0]
+	for i=1 to n:
+		sum_until[i] = sum_until[i-1] + arr[i]
+
+	if i==0:
+		sum_range = sum_until[j]
+	else:
+	sum_range = sum_until[j] - sum_until[i-1]
+	return sum_range

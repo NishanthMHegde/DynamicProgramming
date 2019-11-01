@@ -1,0 +1,95 @@
+Problem: you are given an array on N elements where the index i represents the day and the element at ith position represents the value of the stock at day i. Find out the maximum profit that can be earned by selling the stock. Note that a stock can be sold only after it is bought and it can be sold on the day it is bought or in a future day. 
+
+Example:
+
+Consider the below array: 
+
+
+8 2 1 4 3 5
+
+We need to find the maxium profit earned for those values. 
+
+Answer: The maximum profit earned here is 4 dollars as we can buy the stock at a value of 1 dollar on day 3 and sell it at 5 dollars on the last day. 
+
+Logic:
+
+We need to buy the stock when its value is lowest and buy it when its value is highest in the future, thereby increasing the max profit. 
+
+Solution:
+
+Check when the stock falls to its lowest and maintain it in an array called min_until_now. 
+
+Steps:
+min_until_now = []
+8 is the minimum till first day as it is the opening price. So we add it to the array.
+min_until_now = [8]
+
+2 is minimum now, so add it.
+min_until_now = [8, 2]
+
+1 is minimum unti now, so add it
+min_until_now = [8, 2, 1]
+
+1 is still the minimum
+min_until_now = [8, 2, 1, 1]
+
+1 is still the minimum
+min_until_now = [8, 2, 1, 1, 1]
+
+1 is still the minimum
+min_until_now = [8, 2, 1, 1, 1, 1]
+
+
+Finally, we have min_until_now = [8, 2, 1, 1, 1, 1]
+Let us now create the profit array:
+
+Steps:
+max_profit = []
+Profit = 8-8 = 0
+max_profit = [0]
+
+Profit = 2 - 2 = 0
+
+max_profit = [0, 0]
+
+Profit = 1 -1 = 0
+max_profit = [0, 0, 0]
+
+Profit = 4 -1 = 3
+max_profit = [0, 0, 0, 3]
+
+Profit = 3 - 1 = 2
+max_profit = [0, 0, 0, 3, 2]
+
+Profit = 5 -1 = 4
+max_profit = [0, 0, 0, 3, 2 , 4]
+
+highest_profit = max(max_profit) = 4 dollars
+
+Pseudocode:
+
+function find_profit(prices[]):
+
+size = prices.size()
+
+int min_until_now[size];
+int max_profit[size];
+int highest_profit = None
+
+min_till_now = INF
+
+for i =0 to size:
+	if prices[i] < min_till_now:
+		min_till_now = prices[i]
+		min_until_now[i] = min_till_now
+
+
+//find the profit array
+
+for i=0 to size:
+	max_profit[i] = prices[i] - min_until_now[i]
+
+highest_profit = max(max_profit)
+
+return highest_profit;
+

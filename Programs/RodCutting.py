@@ -18,4 +18,4 @@ for i in range(1, size):
 	rod.append(max_profit)
 
 
-print(rod)
+print("The maximum profit obtained for each length of the rod is as follows %s" % rod)
